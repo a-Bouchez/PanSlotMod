@@ -6,7 +6,7 @@
     "UniqueID": "a-Bouchez.panslot",
     "EntryDll": "PanSlotMod.dll",
     "MinimumApiVersion": "3.0.0",
-    "UpdateKeys": [],
+    "UpdateKeys": ["Nexus:44963"],
     "Dependencies": [
         {
             "UniqueID": "spacechase0.GenericModConfigMenu",
