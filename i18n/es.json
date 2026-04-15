@@ -1,0 +1,7 @@
+﻿{
+    "config.slot-position.name": "Posición del slot de la batea",
+    "config.slot-position.tooltip": "Dónde aparece el slot de la batea en el inventario",
+    "slot-position.below-boots": "Debajo de las botas",
+    "slot-position.right-of-hat": "Al lado del sombrero",
+    "slot-position.below-trash-can": "Debajo del tacho de basura"
+}

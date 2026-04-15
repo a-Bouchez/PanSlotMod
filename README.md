@@ -29,6 +29,20 @@ You need to have an **2 empty slots** in your inventory for the patch to work. O
 ### Bug
 I tested this without my mod and, for some reason, the pan cannot be upgraded with a full inventory (even though all other tools can be upgraded under the same conditions).
 
+## Translations (i18n)
+
+PanSlotMod supports community translations! If you'd like to contribute a translation for your language, follow these steps:
+
+1. Navigate to the `i18n/` folder in the mod directory
+2. Copy `default.json` and rename it using your locale code (e.g., `es.json` for Spanish, `fr.json` for French, `de.json` for German)
+3. Translate the values in the file — **do not modify the keys**
+4. Submit your translation by opening a [Pull Request](https://github.com/a-Bouchez/PanSlotMod/pulls) or posting it in the [Issues](https://github.com/a-Bouchez/PanSlotMod/issues) tab
+
+> For a full list of SMAPI locale codes, check the [SMAPI documentation](https://stardewvalleywiki.com/Modding:Translations).
+
+### Current translations
+English and Spanish translations are provided by my. Community contributions for other languages are welcome!
+
 ## Requirements
 - [SMAPI](https://smapi.io/)
 - [Generic Mod Config Menu](https://www.nexusmods.com/stardewvalley/mods/5098) (optional, for configuration)

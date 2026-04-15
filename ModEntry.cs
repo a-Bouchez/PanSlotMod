@@ -41,8 +41,8 @@ namespace PanSlotMod
 
             gmcm.AddTextOption(
                 mod: ModManifest,
-                name: () => "Pan slot position",
-                tooltip: () => "Where the Pan slot appears in the inventory",
+                name: () => Helper.Translation.Get("config.slot-position.name"),
+                tooltip: () => Helper.Translation.Get("config.slot-position.tooltip"),
                 getValue: () => Config.SlotPosition.ToString(),
                 setValue: value =>
                 {
@@ -52,9 +52,9 @@ namespace PanSlotMod
                 allowedValues: new[] { "BelowBoots", "RightOfHat", "BelowTrashCan" },
                 formatAllowedValue: value => value switch
                 {
-                    "BelowBoots" => "Below boots",
-                    "RightOfHat" => "Next to the hat",
-                    "BelowTrashCan" => "Below the trash can",
+                    "BelowBoots" => Helper.Translation.Get("slot-position.below-boots"),
+                    "RightOfHat" => Helper.Translation.Get("slot-position.right-of-hat"),
+                    "BelowTrashCan" => Helper.Translation.Get("slot-position.below-trash-can"),
                     _ => value
                 });
         }

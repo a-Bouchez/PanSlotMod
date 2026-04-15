@@ -1,0 +1,7 @@
+﻿{
+    "config.slot-position.name": "Pan slot position",
+    "config.slot-position.tooltip": "Where the Pan slot appears in the inventory",
+    "slot-position.below-boots": "Below boots",
+    "slot-position.right-of-hat": "Next to the hat",
+    "slot-position.below-trash-can": "Below the trash can"
+}
