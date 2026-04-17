@@ -1,0 +1,7 @@
+﻿{
+    "config.slot-position.name": "Emplacement du tamis",
+    "config.slot-position.tooltip": "Où l'emplacement du tamis apparaîtra dans l'inventaire",
+    "slot-position.below-boots": "En dessous des bottes",
+    "slot-position.right-of-hat": "À côté du chapeau",
+    "slot-position.below-trash-can": "En dessous de la poubelle"
+} 

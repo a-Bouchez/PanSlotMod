@@ -43,6 +43,8 @@ PanSlotMod supports community translations! If you'd like to contribute a transl
 ### Current translations
 English and Spanish translations are provided by me. Community contributions for other languages are welcome!
 
+Thanks **Deovos** for the french translation!
+
 ## Requirements
 - [SMAPI](https://smapi.io/)
 - [Generic Mod Config Menu](https://www.nexusmods.com/stardewvalley/mods/5098) (optional, for configuration)
