@@ -1,0 +1,7 @@
+{
+    "config.slot-position.name": "Posição do Slot da Peneira",
+    "config.slot-position.tooltip": "Define onde o slot da Peneira aparece no inventário",
+    "slot-position.below-boots": "Abaixo das Botas",
+    "slot-position.right-of-hat": "Ao lado do Chapéu",
+    "slot-position.below-trash-can": "Abaixo da Lixeira"
+}
