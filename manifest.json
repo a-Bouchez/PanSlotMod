@@ -1,7 +1,7 @@
 {
     "Name": "Pan Slot",
     "Author": "a-Bouchez",
-    "Version": "1.0.0",
+    "Version": "1.2.2",
     "Description": "Adds a dedicated slot for the pan tool with automatic usage on panning spots.",
     "UniqueID": "a-Bouchez.panslot",
     "EntryDll": "PanSlotMod.dll",
