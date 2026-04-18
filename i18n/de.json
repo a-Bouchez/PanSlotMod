@@ -1,0 +1,7 @@
+{
+    "config.slot-position.name": "Pan-Slot-Position",
+    "config.slot-position.tooltip": "Wo der Pfannenplatz im Inventar erscheint",
+    "slot-position.below-boots": "Unter dem Stiefel",
+    "slot-position.right-of-hat": "Neben dem Hut",
+    "slot-position.below-trash-can": "Unterhalb des Mülleimers"
+} 
