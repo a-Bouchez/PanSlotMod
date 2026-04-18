@@ -43,7 +43,8 @@ PanSlotMod supports community translations! If you'd like to contribute a transl
 ### Current translations
 English and Spanish translations are provided by me. Community contributions for other languages are welcome!
 
-Thanks **Deovos** for the french translation!
+Thanks **Deovos** for the French translation!
+Thanks [Maatsuki](https://github.com/Maatsuki) for the Portuguese translation!
 
 ## Requirements
 - [SMAPI](https://smapi.io/)
