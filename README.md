@@ -47,6 +47,8 @@ Thanks **Deovos** for the French translation!
 
 Thanks [Maatsuki](https://github.com/Maatsuki) for the Portuguese translation!
 
+Thanks **MrYeti2024** for the German translation! 
+
 ## Requirements
 - [SMAPI](https://smapi.io/)
 - [Generic Mod Config Menu](https://www.nexusmods.com/stardewvalley/mods/5098) (optional, for configuration)
