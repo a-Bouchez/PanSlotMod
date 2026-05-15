@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using StardewModdingAPI;
 using StardewValley;
+using StardewValley.Tools;
 
 namespace PanSlotMod
 {
@@ -10,7 +11,9 @@ namespace PanSlotMod
     {
         public static bool Prefix()
         {
-            if (PanSlotState.StoredPan == null) return true;
+            Pan pan = PanSlotState.GetPan();
+
+            if (pan == null) return true;
             if (!Context.IsWorldReady || !Context.CanPlayerMove) return true;
 
             var player = Game1.player;
@@ -28,7 +31,7 @@ namespace PanSlotMod
             int previousIndex = player.CurrentToolIndex;
             var previousItem = player.Items[previousIndex];
 
-            player.Items[previousIndex] = PanSlotState.StoredPan;
+            player.Items[previousIndex] = pan;
             player.lastClick = new Vector2((int)position.X, (int)position.Y);
             player.BeginUsingTool();
 

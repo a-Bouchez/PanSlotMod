@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using Microsoft.Xna.Framework.Graphics;
+using PanSlotMod.GMCM;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 
@@ -21,11 +22,9 @@ namespace PanSlotMod
             harmony.PatchAll();
 
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
-            helper.Events.GameLoop.SaveLoaded += (s, e) => PanSlotState.Load();
-            helper.Events.GameLoop.Saving += (s, e) => PanSlotState.Save();
-            helper.Events.GameLoop.Saved += (s, e) => PanSlotState.AfterSave();
+            helper.Events.GameLoop.SaveLoaded += OnSaveLoaded;
             helper.Events.Display.MenuChanged += ClintUpgradeSwap.OnMenuChanged;
-
+            helper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
         }
 
         private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
@@ -57,6 +56,16 @@ namespace PanSlotMod
                     "BelowTrashCan" => Helper.Translation.Get("slot-position.below-trash-can"),
                     _ => value
                 });
+        }
+        private void OnSaveLoaded(object sender, SaveLoadedEventArgs e)
+        {
+            PanSlotState.EnsurePanSlotExists();
+        }
+        private void OnUpdateTicked(object sender, UpdateTickedEventArgs e)
+        {
+            if (!Context.IsWorldReady) return;
+            if (!e.IsMultipleOf(60)) return;
+            PanSlotState.EnsurePanSlotExists();
         }
     }
 }

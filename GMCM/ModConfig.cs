@@ -1,4 +1,4 @@
-﻿namespace PanSlotMod
+﻿namespace PanSlotMod.GMCM
 {
     public enum SlotPosition
     {

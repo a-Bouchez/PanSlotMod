@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using StardewValley.Menus;
+using StardewValley.Tools;
 
 namespace PanSlotMod.InventoryPatches
 {
@@ -12,11 +13,13 @@ namespace PanSlotMod.InventoryPatches
             {
                 if (c.name == "PanSlot" && c.containsPoint(x, y))
                 {
-                    if (PanSlotState.StoredPan != null)
+                    Pan pan = PanSlotState.GetPan();
+
+                    if (pan != null)
                     {
-                        __instance.hoveredItem = PanSlotState.StoredPan;
-                        __instance.hoverText = PanSlotState.StoredPan.getDescription();
-                        __instance.hoverTitle = PanSlotState.StoredPan.DisplayName;
+                        __instance.hoveredItem = pan;
+                        __instance.hoverText = pan.getDescription();
+                        __instance.hoverTitle = pan.DisplayName;
                     }
                 }
             }

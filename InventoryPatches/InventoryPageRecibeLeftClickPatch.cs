@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
-using StardewValley.Menus;
 using StardewValley;
+using StardewValley.Menus;
 using StardewValley.Tools;
 
 namespace PanSlotMod.InventoryPatches
@@ -14,31 +14,36 @@ namespace PanSlotMod.InventoryPatches
             {
                 if (c.name == "PanSlot" && c.containsPoint(x, y))
                 {
-                    HandlePanSlotClick(__instance);
-                    return false; 
+                    HandlePanSlotClick();
+                    return false;
                 }
             }
 
             return true;
         }
 
-        private static void HandlePanSlotClick(InventoryPage page)
+        private static void HandlePanSlotClick()
         {
             Item heldItem = Game1.player.CursorSlotItem;
 
+            Pan currentPan = PanSlotState.GetPan();
+
             if (heldItem is Pan heldPan)
             {
-                Pan oldPan = PanSlotState.StoredPan;
+                PanSlotState.SetPan(heldPan);
 
-                PanSlotState.StoredPan = heldItem as Pan;
-                Game1.player.CursorSlotItem = oldPan;
+                Game1.player.CursorSlotItem = currentPan;
 
                 Game1.playSound("dwop");
+
+                return;
             }
-            else if (heldItem == null && PanSlotState.StoredPan != null)
+
+            if (heldItem == null && currentPan != null)
             {
-                Game1.player.CursorSlotItem = PanSlotState.StoredPan;
-                PanSlotState.StoredPan = null;
+                Game1.player.CursorSlotItem = currentPan;
+
+                PanSlotState.ClearPan();
 
                 Game1.playSound("dwop");
             }

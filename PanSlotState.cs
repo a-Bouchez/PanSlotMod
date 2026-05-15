@@ -5,57 +5,30 @@ namespace PanSlotMod
 {
     public static class PanSlotState
     {
-        private const string ModDataKey = "PanSlotMod.StoredPan";
+        public static int PanSlotIndex => Game1.player.MaxItems;
 
-        private static Pan _storedPan;
-        public static Pan StoredPan
+        public static void EnsurePanSlotExists()
         {
-            get => _storedPan;
-            set => _storedPan = value;
+            if (Game1.player.Items.Count <= PanSlotIndex)
+                Game1.player.Items.Add(null);
         }
 
-        public static void Save()
+        public static Pan GetPan()
         {
-            if (_storedPan != null)
-            {
-                Game1.player.modData[ModDataKey] = "true";
-                Game1.player.addItemToInventory(_storedPan);
-            }
-            else
-            {
-                Game1.player.modData.Remove(ModDataKey);
-            }
+            EnsurePanSlotExists();
+            return Game1.player.Items[PanSlotIndex] as Pan;
         }
 
-        public static void Load()
+        public static void SetPan(Pan pan)
         {
-            _storedPan = null;
-
-            if (!Game1.player.modData.ContainsKey(ModDataKey)) return;
-
-            for (int i = 0; i < Game1.player.Items.Count; i++)
-            {
-                if (Game1.player.Items[i] is Pan pan)
-                {
-                    _storedPan = pan;
-                    Game1.player.Items[i] = null;
-                    break;
-                }
-            }
+            EnsurePanSlotExists();
+            Game1.player.Items[PanSlotIndex] = pan;
         }
 
-        public static void AfterSave()
+        public static void ClearPan()
         {
-            if (_storedPan == null) return;
-
-            for (int i = 0; i < Game1.player.Items.Count; i++)
-            {
-                if (Game1.player.Items[i] is Pan)
-                {
-                    Game1.player.Items[i] = null;
-                    break;
-                }
-            }
+            EnsurePanSlotExists();
+            Game1.player.Items[PanSlotIndex] = null;
         }
     }
 }

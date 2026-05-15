@@ -1,8 +1,10 @@
 ﻿using HarmonyLib;
-using StardewValley.Menus;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using PanSlotMod.GMCM;
 using StardewValley;
+using StardewValley.Menus;
+using StardewValley.Tools;
 
 namespace PanSlotMod.InventoryPatches
 {
@@ -61,9 +63,11 @@ namespace PanSlotMod.InventoryPatches
                     break;
             }
 
-            if (PanSlotState.StoredPan != null)
+            Pan pan = PanSlotState.GetPan();
+
+            if (pan != null)
             {
-                PanSlotState.StoredPan.drawInMenu(
+                pan.drawInMenu(
                     b,
                     new Vector2(panSlot.bounds.X, panSlot.bounds.Y),
                     panSlot.scale
