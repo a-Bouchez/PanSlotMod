@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using PanSlotMod.GMCM;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
+using StardewValley;
 
 namespace PanSlotMod
 {
@@ -61,11 +62,21 @@ namespace PanSlotMod
         {
             PanSlotState.EnsurePanSlotExists();
         }
+
+        private int _lastMaxItems = -1;
         private void OnUpdateTicked(object sender, UpdateTickedEventArgs e)
         {
             if (!Context.IsWorldReady) return;
             if (!e.IsMultipleOf(60)) return;
+
             PanSlotState.EnsurePanSlotExists();
+
+            int currentMaxItems = Game1.player.MaxItems;
+            if (_lastMaxItems != -1 && _lastMaxItems != currentMaxItems)
+            {
+                PanSlotState.OnMaxItemsChanged(_lastMaxItems);
+            }
+            _lastMaxItems = currentMaxItems;
         }
     }
 }

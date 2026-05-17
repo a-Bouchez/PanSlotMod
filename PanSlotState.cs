@@ -30,5 +30,14 @@ namespace PanSlotMod
             EnsurePanSlotExists();
             Game1.player.Items[PanSlotIndex] = null;
         }
+        public static void OnMaxItemsChanged(int oldMaxItems)
+        {
+            var pan = Game1.player.Items[oldMaxItems] as Pan;
+            if (pan == null) return;
+
+            Game1.player.Items[oldMaxItems] = null;
+            EnsurePanSlotExists();
+            Game1.player.Items[PanSlotIndex] = pan;
+        }
     }
 }
