@@ -26,6 +26,7 @@ namespace PanSlotMod
             helper.Events.GameLoop.SaveLoaded += OnSaveLoaded;
             helper.Events.Display.MenuChanged += ClintUpgradeSwap.OnMenuChanged;
             helper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
+            helper.Events.GameLoop.ReturnedToTitle += OnReturnedToTitle;
         }
 
         private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
@@ -60,6 +61,7 @@ namespace PanSlotMod
         }
         private void OnSaveLoaded(object sender, SaveLoadedEventArgs e)
         {
+            _lastMaxItems = -1;
             PanSlotState.EnsurePanSlotExists();
         }
 
@@ -77,6 +79,10 @@ namespace PanSlotMod
                 PanSlotState.OnMaxItemsChanged(_lastMaxItems);
             }
             _lastMaxItems = currentMaxItems;
+        }
+        private void OnReturnedToTitle(object sender, ReturnedToTitleEventArgs e)
+        {
+            _lastMaxItems = -1;
         }
     }
 }
