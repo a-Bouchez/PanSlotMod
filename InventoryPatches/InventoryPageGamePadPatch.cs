@@ -1,35 +1,29 @@
 ﻿using HarmonyLib;
-using Microsoft.Xna.Framework.Input;
 using StardewValley;
 using StardewValley.Menus;
 
 namespace PanSlotMod
 {
-    [HarmonyPatch(typeof(InventoryPage), nameof(InventoryPage.receiveGamePadButton))]
-    public class InventoryPageGamePadPatch
+    [HarmonyPatch(typeof(ItemGrabMenu), nameof(ItemGrabMenu.organizeItemsInList))]
+    public class OrganizeItemsGlobalPatch
     {
-        public static bool Prefix(Buttons button, InventoryPage __instance)
+        public static void Prefix(IList<Item> items, out Item __state)
         {
-            if (button != Buttons.Back)
-                return true;
+            __state = null;
 
-            var organizeButton = AccessTools.Field(typeof(InventoryPage), "organizeButton").GetValue(__instance);
-            if (organizeButton == null)
-                return true;
+            if (items != null && object.ReferenceEquals(items, Game1.player.Items) && items.Count > PanSlotState.PanSlotIndex)
+            {
+                __state = items[PanSlotState.PanSlotIndex];
+                items.RemoveAt(PanSlotState.PanSlotIndex);
+            }
+        }
 
-            var items = Game1.player.Items;
-            if (items == null || items.Count <= PanSlotState.PanSlotIndex)
-                return true;
-
-            var pan = items[PanSlotState.PanSlotIndex];
-            items.RemoveAt(PanSlotState.PanSlotIndex);
-
-            ItemGrabMenu.organizeItemsInList(items);
-
-            items.Insert(PanSlotState.PanSlotIndex, pan);
-            Game1.playSound("Ship", null);
-
-            return false;
+        public static void Postfix(IList<Item> items, Item __state)
+        {
+            if (__state != null)
+            {
+                items.Insert(PanSlotState.PanSlotIndex, __state);
+            }
         }
     }
 }
